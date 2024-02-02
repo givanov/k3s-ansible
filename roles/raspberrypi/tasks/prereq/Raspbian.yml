@@ -38,3 +38,9 @@
         path: /usr/sbin/ip6tables-legacy
         name: ip6tables
       register: ip6_legacy
+
+- name: Creates an crontab entry to put the wlan0 interface in promiscuous mode. Needed for metallb to functiomn properly"
+  ansible.builtin.cron:
+    name: "set wlan0 to promiscuous mode"
+    special_time: reboot
+    job: "sudo ifconfig wlan0 promisc"
