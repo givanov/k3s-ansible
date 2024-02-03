@@ -43,4 +43,4 @@
   ansible.builtin.cron:
     name: "set wlan0 to promiscuous mode"
     special_time: reboot
-    job: "sudo ifconfig wlan0 promisc"
+    job: "sleep 30 && sudo ifconfig wlan0 promisc"
