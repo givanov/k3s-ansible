@@ -11,3 +11,17 @@
     dest: /etc/udev/rules.d/99-ansible-managed.rules
     mode: 0644
   notify: Reload udev
+
+- name: Ensure wifi script exists
+  ansible.builtin.template:
+    src: wifi-check.sh.j2
+    dest: /usr/local/bin/wifi-check.sh
+    mode: 0644
+
+- name: Schedule wifi check script every 5 minutes
+  ansible.builtin.cron:
+    name: "check wifi"
+    minute: "*/5"
+    hour: "*"
+    job: "flock -x -n -E 0 /tmp/wifi-check.lock env WLAN_IF=wlan0 /usr/local/bin/wifi-check.sh"
+    user: "root"
