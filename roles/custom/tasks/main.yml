@@ -25,3 +25,9 @@
     hour: "*"
     job: "flock -x -n -E 0 /tmp/wifi-check.lock env WLAN_IF=wlan0 /usr/local/bin/wifi-check.sh"
     user: "root"
+
+- name: Setup cron to vacuum journal logs
+  ansible.builtin.cron:
+    name: "vacuum journal logs"
+    special_time: daily
+    job: "sudo journalctl --vacuum-time 14d"
