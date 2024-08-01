@@ -16,7 +16,7 @@
   ansible.builtin.template:
     src: wifi-check.sh.j2
     dest: /usr/local/bin/wifi-check.sh
-    mode: 0644
+    mode: 0555
 
 - name: Schedule wifi check script every 5 minutes
   ansible.builtin.cron:
