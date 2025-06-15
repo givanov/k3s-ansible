@@ -5,6 +5,12 @@
     special_time: reboot
     job: "sleep 30 && sudo ifconfig wlan0 promisc"
 
+- name: Creates an crontab entry to put the eth0 interface in promiscuous mode. Needed for metallb to functiomn properly"
+  ansible.builtin.cron:
+    name: "set eth0 to promiscuous mode"
+    special_time: reboot
+    job: "sleep 30 && sudo ifconfig eth0 promisc"
+
 - name: Ensure the desired udev rules are in place
   ansible.builtin.template:
     src: udev.rules.j2
