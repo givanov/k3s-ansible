@@ -3,3 +3,5 @@
 udev_rules: []
 # - |
 #   SUBSYSTEM=="usb", ATTR{idVendor}=="0bda", ATTR{idProduct}=="2838", SYMLINK+="rtlsdr"
+resolv_nameservers:
+  - 1.1.1.1

@@ -37,3 +37,9 @@
     name: "vacuum journal logs"
     special_time: daily
     job: "sudo journalctl --vacuum-time 14d"
+
+- name: Ensure custom resolv.conf is in place
+  ansible.builtin.template:
+    src: custom-resolv.conf.j2
+    dest: /etc/custom-resolv.conf
+    mode: 0644
