@@ -45,7 +45,7 @@
     mode: 0644
 
 - name: Install open-iscsi
-  when: ansible_distribution in ['Ubuntu']
+  when: ansible_distribution in ['Ubuntu', 'Debian']
   ansible.builtin.apt:
     name: open-iscsi  # Used by longhorn
     update_cache: "{{ airgap_dir is not defined }}"
